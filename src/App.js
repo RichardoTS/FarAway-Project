@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Form from "./modules/Form";
-import Logo from "./modules/Logo";
-import PackingList from "./modules/PackingList";
-import Stats from "./modules/Stats";
+import Form from "./components/Form";
+import Logo from "./components/Logo";
+import PackingList from "./components/PackingList";
+import Stats from "./components/Stats";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -24,6 +24,14 @@ export default function App() {
     );
   }
 
+  function handleClearList() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items?"
+    );
+
+    if (confirmed) setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -32,6 +40,7 @@ export default function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         onToggleItem={handleToggleItem}
+        onClearList={handleClearList}
       />
       <Stats items={items} />
     </div>
