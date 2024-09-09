@@ -5,6 +5,7 @@ export default function Stats({ items }) {
         <em>Start adding items to your packing list!</em>
       </p>
     );
+
   const numItems = items.length;
   const numPacked = items.filter((items) => items.packed).length;
   const percentage = Math.round((numPacked / numItems) * 100);
